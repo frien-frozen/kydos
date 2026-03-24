@@ -6,7 +6,7 @@ export default async function TuitionDashboard() {
   const session = await auth();
 
   if (!session) redirect("/login");
-  if (session.user.role !== "ADMIN" && session.user.role !== "FINANCE") {
+  if (session.user.role !== "ADMIN" && session.user.role !== "ACCOUNTANT") {
     redirect("/dashboard");
   }
 
