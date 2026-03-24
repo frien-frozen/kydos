@@ -51,5 +51,5 @@ export async function getEnrolledCourses() {
     orderBy: { enrolledAt: "desc" },
   });
 
-  return enrollments.map(e => e.course);
+  return enrollments.map((e: any) => e.course);
 }

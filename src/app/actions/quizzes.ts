@@ -16,7 +16,7 @@ export async function createQuizWithQuestions(moduleId: string, title: string, q
         title,
         moduleId,
         questions: {
-          create: questionsData.map(q => ({
+          create: questionsData.map((q: any) => ({
             text: q.text,
             options: q.options,
             correctOptionIndex: parseInt(q.correctOptionIndex, 10)
@@ -51,7 +51,7 @@ export async function submitQuizAttempt(quizId: string, answersArray: number[]) 
     let correctCount = 0;
     const totalQuestions = quiz.questions.length;
 
-    quiz.questions.forEach((question, index) => {
+    quiz.questions.forEach((question: any, index: number) => {
       if (answersArray[index] === question.correctOptionIndex) {
         correctCount++;
       }
