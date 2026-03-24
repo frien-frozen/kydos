@@ -23,7 +23,7 @@ export default async function CourseCatalog() {
     getEnrolledCourses(),
   ]);
 
-  const enrolledCourseIds = new Set(enrolledCourses.map(c => c.id));
+  const enrolledCourseIds = new Set(enrolledCourses.map((c: any) => c.id));
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
