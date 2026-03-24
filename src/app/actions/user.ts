@@ -1,0 +1,22 @@
+"use server";
+
+import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
+
+export async function approveUser(userId: string) {
+  try {
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        role: "STUDENT",
+        status: "APPROVED",
+      },
+    });
+    
+    revalidatePath("/admin");
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to approve user:", error);
+    return { success: false, error: "Failed to approve user" };
+  }
+}
